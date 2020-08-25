@@ -1,5 +1,5 @@
 <template>
-  <div class="wrapper">
+  <div class="form-wrapper">
     <form action="">
         <FormGroup/>
         <FormGroup/>
@@ -12,7 +12,7 @@
 import FormGroup from './FormGroup.vue'
 
 export default {
-  name: 'myForm',
+  name: 'MyForm',
   components:{
       FormGroup
   }
@@ -20,11 +20,9 @@ export default {
 </script>
 
 <style lang="scss">
-  .wrapper{
-    width: 50%;
-    margin: 0 auto;
-    border: 2px solid rgb(121, 55, 207);
+  .form-wrapper{
     border-radius: 10px;
     padding: 20px;
+    background: #fff;
   }
 </style>
