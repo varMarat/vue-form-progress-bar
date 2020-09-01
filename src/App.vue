@@ -2,18 +2,33 @@
   <div id="app">
     <div class="app-wrapper">
       <ProgressBar/>
-      <MyForm/>
+
+      <form action="">
+        <FieldForm :formData="formData"/>
+        <FieldForm :formData="formData2"/>
+        <FieldForm :formData="formData3"/>
+      </form>
+
     </div>
   </div>
 </template>
 
 <script>
-import MyForm from './components/MyForm'
+import FieldForm from './components/FieldForm'
 import ProgressBar from './components/ProgressBar'
+import data from './data'
+
 export default {
   name: 'App',
   components: {
-    MyForm, ProgressBar
+    FieldForm, ProgressBar
+  },
+  data(){
+    return{
+      formData: data.generalInformation,
+      formData2: data.address,
+      formData3: data.documentType
+    }
   }
 }
 </script>
