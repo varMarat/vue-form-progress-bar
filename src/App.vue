@@ -1,12 +1,15 @@
 <template>
   <div id="app">
     <div class="app-wrapper">
-      <ProgressBar/>
+      <progress-bar/>
 
       <form action="">
-        <FieldForm :formData="formData"/>
-        <FieldForm :formData="formData2"/>
-        <FieldForm :formData="formData3"/>
+        <field-form v-for="(item, index) in keys" :key="index"
+          :formData='formData[item]'
+          :nameBtn="nameBtn"
+          v-show="step===index+1"
+          @next="nextClick"
+        />
       </form>
 
     </div>
@@ -21,13 +24,26 @@ import data from './data'
 export default {
   name: 'App',
   components: {
-    FieldForm, ProgressBar
+    'field-form': FieldForm,
+    'progress-bar': ProgressBar
   },
   data(){
     return{
-      formData: data.generalInformation,
-      formData2: data.address,
-      formData3: data.documentType
+      formData: data,
+      keys: Object.keys(data),
+      step: 1,
+      nameBtn:'next'
+    }
+  },
+  methods:{
+    nextClick(e){
+      if(this.step < this.keys.length){
+         e.preventDefault()
+         this.step++
+      }
+      if(this.step===this.keys.length){
+        this.nameBtn='submit'
+      }
     }
   }
 }

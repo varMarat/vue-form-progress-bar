@@ -1,14 +1,14 @@
 <template>
   <div class="form-wrapper">
     <div>
-        <FormGroup 
+        <form-group 
           v-for="(item, index) in formData" :key="index"
           :index="+index"
           :item="item"
           :errors="errors"
           @input-child="onInput"
-        />
-        <button class="btn" >next</button>
+          />
+        <button class="btn" @click="onClick($event)">{{nameBtn}}</button>
     </div>
   </div>
 </template>
@@ -19,12 +19,11 @@ import {required, minLength} from 'vuelidate/lib/validators'
 export default {
   name: 'FieldForm',
   components:{
-      FormGroup
+      'form-group': FormGroup
   },
   props:{
-    formData:{
-      type: Array
-    }
+    formData: Array,
+    nameBtn: String
   },
   beforeMount(){
     this.formData.forEach((item)=>{
@@ -51,7 +50,7 @@ export default {
   data(){
     return{
       fieldsVal:{},
-      errors:[]
+      errors:[], 
     }
   },
   methods:{
@@ -64,8 +63,8 @@ export default {
         this.$set(this.errors, data.id, false)
       }  
     },
-    onClick(){
-      console.log('btn')
+    onClick(e){
+      this.$emit('next', e)
     }
   }
 }

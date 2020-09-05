@@ -19,8 +19,7 @@ export default {
             type: Object
         },
         errors: Array,
-        index: Number,
-        value: String,
+        index: Number
     },
     methods:{
         onInput(e, id){
