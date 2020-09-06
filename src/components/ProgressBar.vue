@@ -1,16 +1,32 @@
 <template>
     <div class="progress-wrapper">
         <ul class="progressbar">
-            <li class="active">1<span>Общая информация</span></li>
-            <li>2<span>Адрес</span></li>
-            <li>3<span>Тип документа</span></li>
+            <li
+                v-for="(item, index) in titles" :key="index"
+                :class="index+1==step? 'active': null"
+            >
+            {{index+1}}
+            <span>{{item}}</span>
+            </li>
         </ul>
     </div>
 </template>
 
 <script>
 export default{
-    name: 'ProgressBar'
+    name: 'ProgressBar',
+    props:{
+        step: Number
+    },
+    data(){
+        return{
+            titles:[
+                'Общая информация',
+                'Адрес',
+                'Тип документа'
+            ]
+        }
+    }
 }
 </script>
 
@@ -63,6 +79,9 @@ export default{
             left: -50%;
             right: -50%;
         }
+    }
+    .active{
+            background-color: #27AE60;
     }
     
 }

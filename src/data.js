@@ -55,11 +55,6 @@ export default{
       type: 'text',
       required: false,
       name: 'doctor'
-    },
-    {
-      id:9,
-      label:'Не отправлять смс',
-      type:'checkbox'
     }
   ],
   address:[

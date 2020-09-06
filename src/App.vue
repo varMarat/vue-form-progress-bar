@@ -1,7 +1,7 @@
 <template>
   <div id="app">
     <div class="app-wrapper">
-      <progress-bar/>
+      <progress-bar :step="step"/>
 
       <form action="">
         <field-form v-for="(item, index) in keys" :key="index"
