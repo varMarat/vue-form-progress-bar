@@ -26,8 +26,11 @@ export default {
     nameBtn: String
   },
   beforeMount(){
-    this.formData.forEach((item)=>{
-      this.errors.push(true)
+    this.formData.forEach((item, index)=>{
+      this.$set(this.errors, index, {
+         error: true,
+         activated: false,
+      })
       if(item.required===true){
          this.$set(this.fieldsVal, item.name, '')
       }
@@ -40,9 +43,11 @@ export default {
         minLength: minLength(4)
       },
       email:{
+        required,
         minLength: minLength(6)
       },
       password:{
+        required,
         minLength: minLength(8)
       }
     }
@@ -58,9 +63,11 @@ export default {
       if(this.fieldsVal[data.name] != undefined){
         this.fieldsVal[data.name] = data.value
         this.$v.fieldsVal[data.name].$touch()
-        this.$set(this.errors, data.id, this.$v.fieldsVal[data.name].$error)
+        this.errors[data.id].error = this.$v.fieldsVal[data.name].$error
+        this.errors[data.id].activated = true
       }else{
-        this.$set(this.errors, data.id, false)
+        this.errors[data.id].error = false
+        this.errors[data.id].activated = true
       }  
     },
     onClick(e){
@@ -84,8 +91,5 @@ export default {
     border: none;
     background: #27AE60;
     color: #fff;
-  }
-  .bor{
-    border: 1px solid red;
   }
 </style>

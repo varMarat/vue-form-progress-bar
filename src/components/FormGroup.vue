@@ -1,6 +1,10 @@
 <template>
     <div class="my-form-group">
-        <label for="">{{item.label}}</label>
+        <label for="">{{item.label}}</label> 
+        <span v-show="errors[index].activated">
+            <i class="fas fa-exclamation-circle" v-if="errors[index].error"></i>
+            <i class="fas fa-check-circle" v-else></i>
+        </span>
         <input 
             :type="item.type"
             :name="item.name"
@@ -44,11 +48,11 @@ export default {
     box-sizing: border-box;
     transition: 0.3s;
     &:focus{
-        // border-color: rgb(30, 144, 255);
-        // box-shadow: 0 0 8px 0 rgb(30, 144, 255);
+        border-color: rgb(30, 144, 255);
+        box-shadow: 0 0 8px 0 rgb(30, 144, 255);
     }
-    .bor{
-        border: 3px solid red;
-    }
+}
+span{
+    margin-left: 5px;
 }
 </style>

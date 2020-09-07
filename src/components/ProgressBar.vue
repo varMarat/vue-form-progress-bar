@@ -3,7 +3,7 @@
         <ul class="progressbar">
             <li
                 v-for="(item, index) in titles" :key="index"
-                :class="index+1==step? 'active': null"
+                :class="{'active':index+1==step}"
             >
             {{index+1}}
             <span>{{item}}</span>
