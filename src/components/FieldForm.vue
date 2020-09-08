@@ -7,15 +7,21 @@
           :item="item"
           :errors="errors"
           @input-child="onInput"
-          />
-        <button class="btn" @click="onClick($event)">{{nameBtn}}</button>
+        />
+        <button 
+          class="btn" 
+          :class="{'done':!done}" 
+          @click="onClick($event)" 
+          :disabled="!done">
+          {{nameBtn}}
+        </button>
     </div>
   </div>
 </template>
 
 <script>
 import FormGroup from './FormGroup.vue'
-import {required, minLength} from 'vuelidate/lib/validators'
+import {required, minLength, email} from 'vuelidate/lib/validators'
 export default {
   name: 'FieldForm',
   components:{
@@ -44,6 +50,7 @@ export default {
       },
       email:{
         required,
+        email,
         minLength: minLength(6)
       },
       password:{
@@ -73,6 +80,13 @@ export default {
     onClick(e){
       this.$emit('next', e)
     }
+  },
+  computed:{
+    done(){
+      return this.errors.every((item)=>{
+        return item.error == false
+      })
+    }
   }
 }
 </script>
@@ -91,5 +105,8 @@ export default {
     border: none;
     background: #27AE60;
     color: #fff;
+  }
+  .done{
+    opacity: 0.5;
   }
 </style>

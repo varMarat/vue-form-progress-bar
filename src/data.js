@@ -62,21 +62,21 @@ export default{
       id: 1,
       label:'test1',
       type: 'text',
-      required: true,
+      required: false,
       name:'test1'
     },
     { 
       id: 1,
       label:'test2',
       type: 'text',
-      required: true,
+      required: false,
       name:'test2'
     },
     { 
       id: 1,
       label:'test3',
       type: 'text',
-      required: true,
+      required: false,
       name:'test3'
     }
   ],
@@ -85,21 +85,21 @@ export default{
       id: 1,
       label:'test1.1',
       type: 'text',
-      required: true,
+      required: false,
       name:'test1.1'
     },
     { 
       id: 1,
       label:'test2.1',
       type: 'text',
-      required: true,
+      required: false,
       name:'test2.1'
     },
     { 
       id: 1,
       label:'test3.1',
       type: 'text',
-      required: true,
+      required: false,
       name:'test3.1'
     }
   ]
